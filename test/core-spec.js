@@ -1,7 +1,7 @@
 import {List, Map, fromJS} from 'immutable';
 import {expect} from 'chai';
 
-import {setEntries, setQuestions} from '../src/core';
+import {setQuestions, askQuestion} from '../src/core';
 
 describe('application logic', () => {
 
@@ -27,3 +27,23 @@ describe('application logic', () => {
     });
   });
 });
+
+describe('Ask Question', () => {
+  var state = {
+    quiz:{
+      rounds: [{
+        questions: [
+          {text: "How many..."},
+          {text: "When did..."}
+        ]},
+        {}
+      ]
+    }
+  }
+
+  var nextState = askQuestion(state)
+
+  it('Sends the latest question', () => {
+    expect(nextState.nextQuestion.text).to.equal('How many...')
+  })
+})
