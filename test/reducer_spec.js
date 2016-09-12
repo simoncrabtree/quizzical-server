@@ -1,27 +1,21 @@
-import {List, Map, fromJS} from 'immutable';
-import {expect} from 'chai';
+import {expect} from 'chai'
 
-import {setQuestions, askQuestion} from '../src/core';
+import {SET_QUIZ} from '../src/actions'
 import reducer from '../src/reducer.js'
 
-describe('reducer', () => {
-
-  it('can reduce actions', () => {
-    const state = {}
-    const action = {
-      type: 'SET_QUESTIONS',
+describe('SET_QUIZ', () => {
+  it('adds the quiz to the state', () => {
+    const nextState = reducer({}, {
+      type: SET_QUIZ, 
       quiz: {
-        rounds: [{
-          questions: [
-            {text: "How many..."},
-            {text: "In which year did..."}
-          ]
-        }]
+        rounds: []
       }
-    }
+    })
 
-    const nextState = reducer(state, action)
-
-    expect(nextState.quiz.rounds[0].questions[0].text).to.equal("How many...")
+    expect(nextState).to.deep.equal({
+      quiz: {
+        rounds: []
+      }
+    })
   })
-});
+})

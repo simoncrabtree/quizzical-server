@@ -1,6 +1,1 @@
-let setQuestionsAction = {
-  type: 'SET_QUESTIONS',
-
-}
-
-return
+export const SET_QUIZ = 'SET_QUIZ'
