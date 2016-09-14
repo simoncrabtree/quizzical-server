@@ -1,4 +1,4 @@
-import {SET_QUIZ} from './actions'
+import {SET_QUIZ, ASK_QUESTION} from './actions'
 
 const initialState = {}
 
@@ -7,6 +7,13 @@ export default function reducer(state = initialState, action) {
     case SET_QUIZ:
       return Object.assign({}, state, {
         quiz: action.quiz
+      })
+
+    case ASK_QUESTION:
+      return Object.assign({}, state, {
+        currentQuestion: {
+          text: 'How many...'
+        }
       })
   }
   return state

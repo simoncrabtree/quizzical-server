@@ -10,5 +10,9 @@ export default function startServer(store) {
   io.on('connection', (socket) => {
     console.log("Client Connected", socket.id)
     socket.emit('state', JSON.stringify(store.getState()))
+    socket.on('action', (action) => {
+      store.dispatch(action)
+    })
   })
+
 }
