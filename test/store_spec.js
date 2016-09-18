@@ -12,6 +12,8 @@ describe('store', () => {
     const store = makeStore()
     store.dispatch({type: SET_QUIZ, quiz: {}})
 
-    expect(store.getState()).to.deep.equal({quiz: {}})
+    var state = store.getState()
+
+    expect(state.quiz).to.deep.equal({})
   })
 })
